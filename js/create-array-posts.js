@@ -1,5 +1,5 @@
 import { getDataArrayPosts } from './data.js';
-import { getRandomInteger, generatePostId, generatePhotoId, commentId } from './utils.js';
+import { getRandomId, getRandomInteger } from './utils.js';
 
 const POSTS_ARRAY_LENGTH = 25;
 const AVATARS_SET = {
@@ -14,8 +14,24 @@ const COMMENTS_SET = {
   MIN: 0,
   MAX: 30,
 };
+const POST_ID_SET = {
+  MIN: 1,
+  MAX: 25,
+};
+const PHOTO_ID_SET = {
+  MIN: 1,
+  MAX: 25,
+};
+const COMMENT_ID_SET = {
+  MIN: 1,
+  MAX: 10000,
+};
 
 const { DESCRIPTIONS, COMMENTS, NAMES } = getDataArrayPosts();
+
+const generatePostId = getRandomId(POST_ID_SET.MIN, POST_ID_SET.MAX);
+const generatePhotoId = getRandomId(PHOTO_ID_SET.MIN, PHOTO_ID_SET.MAX);
+const commentId = getRandomId(COMMENT_ID_SET.MIN, COMMENT_ID_SET.MAX);
 
 const comment = () => {
   const avatarUrl = `img/avatar-${ getRandomInteger(AVATARS_SET.MIN, AVATARS_SET.MAX) }.svg`;
