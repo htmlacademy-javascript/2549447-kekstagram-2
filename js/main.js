@@ -1,3 +1,3 @@
 import { getArrayPosts } from './create-array-posts.js';
-
-console.log(getArrayPosts);
+import { renderTumbnails } from './render-tumbnails.js';
+renderTumbnails(structuredClone(getArrayPosts));
