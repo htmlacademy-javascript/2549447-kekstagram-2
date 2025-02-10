@@ -56,4 +56,4 @@ const isNormalTime = (startWorkDay, finishWorkDay, startMeeting, durationMeeting
   }
 };
 
-console.log(isNormalTime('08:00', '17:30', '14:00', 90));
+isNormalTime('08:00', '17:30', '14:00', 90);
