@@ -1,9 +1,13 @@
+import { scaleControlEventListener, normalizeScale } from './img-scale-change.js';
+import { resetEffects, effectsEventListener } from './effects.js';
+
 const imgUploadInputElement = document.querySelector('.img-upload__input');
 const imgUploadOverlayElement = document.querySelector('.img-upload__overlay');
 const bodyElement = document.querySelector('body');
 const imgUploadCancelElement = document.querySelector('.img-upload__cancel');
 const hashtagInputElement = imgUploadOverlayElement.querySelector('.text__hashtags');
 const commentInputElement = imgUploadOverlayElement.querySelector('.text__description');
+const imgUploadFormElement = document.querySelector('.img-upload__form');
 
 const resetErrorClass = () => {
   const imgUploadFieldWrapperList = imgUploadOverlayElement.querySelectorAll('.img-upload__field-wrapper');
@@ -27,6 +31,7 @@ const imgCloseActions = () => {
   commentInputElement.value = '';
   resetErrorClass();
   resetErrorText();
+  normalizeScale();
 };
 
 const imgUploadCancelElementClick = () => {
@@ -43,6 +48,7 @@ const onDocumentKeydown = (evt) => {
     } else {
       registerEventsCloseImgUpload();
       imgCloseActions();
+      imgUploadFormElement.reset();
     }
   }
 };
@@ -58,6 +64,9 @@ const registerEventsOpenImgUpload = () => {
     bodyElement.classList.add('modal-open');
     imgUploadCancelElement.addEventListener('click', imgUploadCancelElementClick);
     document.addEventListener('keydown', onDocumentKeydown);
+    scaleControlEventListener();
+    resetEffects();
+    effectsEventListener();
   });
 };
 
