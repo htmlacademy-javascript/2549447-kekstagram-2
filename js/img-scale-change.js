@@ -14,7 +14,7 @@ const SCALE_NORMAL_VALUE = 100;
 let currentScaleValue = SCALE_NORMAL_VALUE;
 
 const scaleActions = () => {
-  scaleControlValueElement.setAttribute('value', `${currentScaleValue }% `);
+  scaleControlValueElement.setAttribute('value', `${currentScaleValue }%`);
   const clearPersentValue = scaleControlValueElement.value.replace('%', '') * 0.01;
   imgUploadElement.style.scale = clearPersentValue;
 };

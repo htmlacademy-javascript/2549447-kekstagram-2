@@ -8,7 +8,7 @@ const COMMENT_LENGTH_MAX = 140;
 const pristine = new Pristine(imgUploadFormElement, {
   classTo: 'img-upload__field-wrapper',
   errorTextParent: 'img-upload__field-wrapper',
-  errorClass: 'img-upload__field-wrapper--error',
+  errorTextClass: 'img-upload__field-wrapper--error',
 });
 
 const inputHashtags = (value) => value.toLowerCase().trim().split(/\s+/);
@@ -52,6 +52,17 @@ const htAndComValidation = () => {
   pristine.addValidator(commentInputElement, isCommentValid, 'длина комментария больше 140 символов');
 };
 
+const checkFormSubmit = (evt) => {
+  evt.preventDefault();
+  if (pristine.validate()) {
+    hashtagInputElement.value = hashtagInputElement.value.trim().replaceAll(/\s+/g, ' ');
+    imgUploadFormElement.submit();
+  }
+};
+
+imgUploadFormElement.addEventListener('submit', checkFormSubmit);
+
 export {
-  htAndComValidation
+  htAndComValidation,
+  // registerEventFormSubmit
 };
