@@ -1,13 +1,14 @@
 import { scaleControlEventListener, normalizeScale } from './img-scale-change.js';
 import { resetEffects, effectsEventListener } from './effects.js';
 
-const imgUploadInputElement = document.querySelector('.img-upload__input');
-const imgUploadOverlayElement = document.querySelector('.img-upload__overlay');
 const bodyElement = document.querySelector('body');
-const imgUploadCancelElement = document.querySelector('.img-upload__cancel');
+const imgUploadElement = bodyElement.querySelector('.img-upload');
+const imgUploadInputElement = imgUploadElement.querySelector('.img-upload__input');
+const imgUploadOverlayElement = imgUploadElement.querySelector('.img-upload__overlay');
+const imgUploadCancelElement = imgUploadElement.querySelector('.img-upload__cancel');
 const hashtagInputElement = imgUploadOverlayElement.querySelector('.text__hashtags');
 const commentInputElement = imgUploadOverlayElement.querySelector('.text__description');
-const imgUploadFormElement = document.querySelector('.img-upload__form');
+const imgUploadFormElement = imgUploadElement.querySelector('.img-upload__form');
 
 const resetErrorClass = () => {
   const imgUploadFieldWrapperList = imgUploadOverlayElement.querySelectorAll('.img-upload__field-wrapper');
@@ -35,7 +36,7 @@ const imgCloseActions = () => {
 };
 
 const imgUploadCancelElementClick = () => {
-  registerEventsCloseImgUpload();
+  removeEventsCloseImgUpload();
   imgCloseActions();
 };
 
@@ -46,14 +47,14 @@ const onDocumentKeydown = (evt) => {
       evt.stopPropagation();
       bodyElement.classList.add('modal-open');
     } else {
-      registerEventsCloseImgUpload();
+      removeEventsCloseImgUpload();
       imgCloseActions();
       imgUploadFormElement.reset();
     }
   }
 };
 
-function registerEventsCloseImgUpload () {
+function removeEventsCloseImgUpload () {
   document.removeEventListener('keydown', onDocumentKeydown);
   imgUploadCancelElement.removeEventListener('click', imgUploadCancelElementClick);
 }
@@ -70,11 +71,6 @@ const registerEventsOpenImgUpload = () => {
   });
 };
 
-const onOffImgUpload = () => {
-  registerEventsOpenImgUpload();
-  registerEventsCloseImgUpload();
-};
-
 export {
-  onOffImgUpload
+  registerEventsOpenImgUpload
 };

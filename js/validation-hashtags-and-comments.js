@@ -45,7 +45,7 @@ const isCommentValid = (value) => {
   return commentValidLength;
 };
 
-const htAndComValidation = () => {
+const initValidation = () => {
   pristine.addValidator(hashtagInputElement, isHashtagValueValid, 'введён невалидный хэштег');
   pristine.addValidator(hashtagInputElement, isHashtagsRepeatValid, 'хэштеги повторяются');
   pristine.addValidator(hashtagInputElement, isHashtagsQuantityValid , 'превышено количество хэштегов');
@@ -63,6 +63,5 @@ const checkFormSubmit = (evt) => {
 imgUploadFormElement.addEventListener('submit', checkFormSubmit);
 
 export {
-  htAndComValidation,
-  // registerEventFormSubmit
+  initValidation
 };

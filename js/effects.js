@@ -32,8 +32,8 @@ noUiSlider.create(effectLevelSliderElement, {
 
 const filterChange = (filter, unit) => {
   effectLevelSliderElement.noUiSlider.on('update', () => {
-    effectLevelValueElement.setAttribute('value', effectLevelSliderElement.noUiSlider.get());
-    imgUploadElement.style.filter = `${ filter }(${ effectLevelValueElement.getAttribute('value') }${ unit })`;
+    effectLevelValueElement.setAttribute('value', effectLevelSliderElement.noUiSlider.get() + unit);
+    imgUploadElement.style.filter = `${ filter }(${ effectLevelValueElement.getAttribute('value') })`;
   });
 };
 
