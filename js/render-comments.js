@@ -28,6 +28,7 @@ const renderCommentsBySteps = () => {
   });
 
   socialCommentsElement.append(listCommentsFragment);
+
   commentsShownCountElement.textContent = visibleCommentsLength;
   commentsTotalCountElement.textContent = allComments.length;
 

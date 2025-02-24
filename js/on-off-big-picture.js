@@ -18,8 +18,6 @@ const bigPictureCloseActions = () => {
 };
 
 const registerEventsCloseBigPicture = () => {
-  bigPictureCloseActions();
-
   bigPictureCloseElement.addEventListener('click', () => {
     bigPictureCloseActions();
   });
@@ -45,9 +43,9 @@ const pushDataBigPicture = ({photo, likes, description}) => {
 
 const onOffBigPicture = (data) => {
   picturesElement.addEventListener('click', (evt) => {
-    evt.preventDefault();
-
     if(evt.target.closest('.picture')) {
+      evt.preventDefault();
+
       openBigPicture();
 
       const getDataTargetPost = data.find((element) => {
