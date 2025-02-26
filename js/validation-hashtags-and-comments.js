@@ -52,16 +52,12 @@ const initValidation = () => {
   pristine.addValidator(commentInputElement, isCommentValid, 'длина комментария больше 140 символов');
 };
 
-const checkFormSubmit = (evt) => {
-  evt.preventDefault();
-  if (pristine.validate()) {
-    hashtagInputElement.value = hashtagInputElement.value.trim().replaceAll(/\s+/g, ' ');
-    imgUploadFormElement.submit();
-  }
+const hashtagsInputNormalize = () => {
+  hashtagInputElement.value = hashtagInputElement.value.trim().replaceAll(/\s+/g, ' ');
 };
 
-imgUploadFormElement.addEventListener('submit', checkFormSubmit);
-
 export {
-  initValidation
+  initValidation,
+  pristine,
+  hashtagsInputNormalize
 };

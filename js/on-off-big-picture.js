@@ -30,12 +30,12 @@ const registerEventsCloseBigPicture = () => {
   });
 };
 
-const pushDataBigPicture = ({photo, likes, description}) => {
+const pushDataBigPicture = ({url, likes, description}) => {
   const bigPictureImgElement = bigPictureElement.querySelector('img');
   const likesCountElement = bigPictureElement.querySelector('.likes-count');
   const altCaptionElement = bigPictureElement.querySelector('.social__caption');
 
-  bigPictureImgElement.src = photo;
+  bigPictureImgElement.src = url;
   likesCountElement.textContent = likes;
   bigPictureImgElement.alt = description;
   altCaptionElement.textContent = bigPictureImgElement.alt;

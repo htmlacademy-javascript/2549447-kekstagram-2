@@ -8,11 +8,11 @@ const renderTumbnails = (data) => {
 
   const listPicturesFragment = document.createDocumentFragment();
 
-  data.forEach(({photo, description, likes, comments, id}) => {
+  data.forEach(({url, description, likes, comments, id}) => {
     const pictureCloneElement = pictureTemplateElement.cloneNode(true);
     const pictureImgElement = pictureCloneElement.querySelector('.picture__img');
     pictureCloneElement.dataset.pictureId = id;
-    pictureImgElement.src = photo;
+    pictureImgElement.src = url;
     pictureImgElement.alt = description;
 
     const pictureInfoElement = pictureCloneElement.querySelector('.picture__info');

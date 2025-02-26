@@ -25,19 +25,13 @@ const resetErrorText = () => {
 };
 
 const imgCloseActions = () => {
+  removeEventsCloseImgUpload();
   imgUploadOverlayElement.classList.add('hidden');
   bodyElement.classList.remove('modal-open');
-  imgUploadInputElement.value = '';
-  hashtagInputElement.value = '';
-  commentInputElement.value = '';
+  imgUploadFormElement.reset();
   resetErrorClass();
   resetErrorText();
   normalizeScale();
-};
-
-const imgUploadCancelElementClick = () => {
-  removeEventsCloseImgUpload();
-  imgCloseActions();
 };
 
 const onDocumentKeydown = (evt) => {
@@ -47,23 +41,21 @@ const onDocumentKeydown = (evt) => {
       evt.stopPropagation();
       bodyElement.classList.add('modal-open');
     } else {
-      removeEventsCloseImgUpload();
       imgCloseActions();
-      imgUploadFormElement.reset();
     }
   }
 };
 
 function removeEventsCloseImgUpload () {
   document.removeEventListener('keydown', onDocumentKeydown);
-  imgUploadCancelElement.removeEventListener('click', imgUploadCancelElementClick);
+  imgUploadCancelElement.removeEventListener('click', imgCloseActions);
 }
 
 const registerEventsOpenImgUpload = () => {
   imgUploadInputElement.addEventListener('change', () => {
     imgUploadOverlayElement.classList.remove('hidden');
     bodyElement.classList.add('modal-open');
-    imgUploadCancelElement.addEventListener('click', imgUploadCancelElementClick);
+    imgUploadCancelElement.addEventListener('click', imgCloseActions);
     document.addEventListener('keydown', onDocumentKeydown);
     scaleControlEventListener();
     resetEffects();
@@ -72,5 +64,7 @@ const registerEventsOpenImgUpload = () => {
 };
 
 export {
-  registerEventsOpenImgUpload
+  registerEventsOpenImgUpload,
+  imgCloseActions,
+  onDocumentKeydown
 };
