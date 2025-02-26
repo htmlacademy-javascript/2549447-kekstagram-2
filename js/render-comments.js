@@ -16,13 +16,13 @@ const renderCommentsBySteps = () => {
   const visibleComments = allComments.slice(startCommentsListLength, startCommentsListLength + NEW_COMMENTS_LIST_LENGTH_STEP);
   const visibleCommentsLength = visibleComments.length + startCommentsListLength;
 
-  visibleComments.forEach(({avatar, name, comment}) => {
+  visibleComments.forEach(({avatar, name, message}) => {
     const socialCommentCloneElement = socialCommentElement.cloneNode(true);
     const socialPictureElement = socialCommentCloneElement.querySelector('.social__picture');
     const socialTextElement = socialCommentCloneElement.querySelector('.social__text');
     socialPictureElement.src = avatar;
     socialPictureElement.alt = name;
-    socialTextElement.textContent = comment;
+    socialTextElement.textContent = message;
 
     listCommentsFragment.append(socialCommentCloneElement);
   });
