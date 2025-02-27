@@ -28,10 +28,11 @@ const getServerData = async () => await load(Route.GET_DATA);
 
 const sendServerData = async (body) => await load(Route.SEND_DATA, Method.POST, body);
 
-const bootstrap = async (renderTumbnails, showBigPicture, showError) => {
+const bootstrap = async (renderTumbnails, configFilter, showBigPicture, showError) => {
   try {
     const getServerPhotos = await getServerData();
     renderTumbnails(getServerPhotos);
+    configFilter(getServerPhotos);
     showBigPicture(getServerPhotos);
   } catch (error) {
     showError();
