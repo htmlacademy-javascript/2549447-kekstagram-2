@@ -8,7 +8,7 @@ const COMMENT_LENGTH_MAX = 140;
 const pristine = new Pristine(imgUploadFormElement, {
   classTo: 'img-upload__field-wrapper',
   errorTextParent: 'img-upload__field-wrapper',
-  errorTextClass: 'img-upload__field-wrapper--error',
+  errorClass: 'img-upload__field-wrapper--error',
 });
 
 const inputHashtags = (value) => value.toLowerCase().trim().split(/\s+/);
@@ -24,6 +24,8 @@ const isHashtagValueValid = (value) => {
     }
   )) {
     return true;
+  } else {
+    return false;
   }
 };
 
@@ -37,12 +39,20 @@ const isHashtagsRepeatValid = (value) => {
 
 const isHashtagsQuantityValid = (value) => {
   const hashtagsQuantityValid = inputHashtags(value).length <= HASHTAGS_ARRAY_LENGTH_MAX;
-  return hashtagsQuantityValid;
+  if (hashtagsQuantityValid) {
+    return hashtagsQuantityValid;
+  } else {
+    return false;
+  }
 };
 
 const isCommentValid = (value) => {
   const commentValidLength = value.length <= COMMENT_LENGTH_MAX;
-  return commentValidLength;
+  if (commentValidLength) {
+    return commentValidLength;
+  } else {
+    return false;
+  }
 };
 
 const initValidation = () => {

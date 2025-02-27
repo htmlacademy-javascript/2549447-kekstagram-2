@@ -16,7 +16,7 @@ const ErrorMessage = {
 };
 
 const load = async (route, method = Method.GET, body = null) => {
-  const response = await fetch(`${BASE_URL}${route}`, { method, body });
+  const response = await fetch(`${ BASE_URL }${ route }`, { method, body });
   if (response.ok) {
     return await response.json();
   } else {
