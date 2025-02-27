@@ -18,10 +18,10 @@ const resetErrorClass = () => {
   });
 };
 
-const resetErrorText = () => {
+const resetPrisineError = () => {
   const pristineErrorList = imgUploadOverlayElement.querySelectorAll('.pristine-error');
   pristineErrorList.forEach((item) => {
-    item.textContent = '';
+    item.innerHTML = '';
   });
 };
 
@@ -31,7 +31,7 @@ const imgCloseActions = () => {
   bodyElement.classList.remove('modal-open');
   imgUploadFormElement.reset();
   resetErrorClass();
-  resetErrorText();
+  resetPrisineError();
   normalizeScale();
 };
 
