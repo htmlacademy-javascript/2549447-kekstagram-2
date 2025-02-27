@@ -1,3 +1,4 @@
+import { imgUpload } from './img-upload.js';
 import { scaleControlEventListener, normalizeScale } from './img-scale-change.js';
 import { resetEffects, effectsEventListener } from './effects.js';
 
@@ -53,18 +54,21 @@ function removeEventsCloseImgUpload () {
 
 const registerEventsOpenImgUpload = () => {
   imgUploadInputElement.addEventListener('change', () => {
-    imgUploadOverlayElement.classList.remove('hidden');
-    bodyElement.classList.add('modal-open');
-    imgUploadCancelElement.addEventListener('click', imgCloseActions);
-    document.addEventListener('keydown', onDocumentKeydown);
-    scaleControlEventListener();
-    resetEffects();
-    effectsEventListener();
+    if (imgUpload() === false) {
+      imgCloseActions();
+    } else {
+      document.addEventListener('keydown', onDocumentKeydown);
+      imgUploadOverlayElement.classList.remove('hidden');
+      bodyElement.classList.add('modal-open');
+      imgUploadCancelElement.addEventListener('click', imgCloseActions);
+      scaleControlEventListener();
+      resetEffects();
+      effectsEventListener();
+    }
   });
 };
 
 export {
   registerEventsOpenImgUpload,
-  imgCloseActions,
-  onDocumentKeydown
+  imgCloseActions
 };
