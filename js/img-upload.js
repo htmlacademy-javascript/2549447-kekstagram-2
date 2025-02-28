@@ -1,14 +1,14 @@
-const imgUploadElement = document.querySelector('.img-upload');
-const imgUploadInputElement = imgUploadElement.querySelector('.img-upload__input');
-const imgUploadPreviewElement = imgUploadElement.querySelector('.img-upload__preview img');
-const effectsPreviewArrElement = imgUploadElement.querySelectorAll('.effects__preview');
-
 const FILE_TYPES = [
   '.jpg',
   '.jpeg',
   '.png',
   '.webp'
 ];
+
+const imgUploadElement = document.querySelector('.img-upload');
+const imgUploadInputElement = imgUploadElement.querySelector('.img-upload__input');
+const imgUploadPreviewElement = imgUploadElement.querySelector('.img-upload__preview img');
+const effectsPreviewArrElement = imgUploadElement.querySelectorAll('.effects__preview');
 
 const imgUpload = () => {
   const file = imgUploadInputElement.files[0];

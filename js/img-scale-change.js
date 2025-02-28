@@ -1,3 +1,8 @@
+const SCALE_STEP = 25;
+const SCALE_MIN_VALUE = 25;
+const SCALE_MAX_VALUE = 100;
+const SCALE_NORMAL_VALUE = 100;
+
 const imgUploadPreviewContainerElement = document.querySelector('.img-upload__preview-container');
 const imgUploadPreviewElement = imgUploadPreviewContainerElement.querySelector('.img-upload__preview');
 const imgUploadElement = imgUploadPreviewElement.querySelector('img');
@@ -5,11 +10,6 @@ const scaleElement = imgUploadPreviewContainerElement.querySelector('.scale');
 const scaleControlValueElement = scaleElement.querySelector('.scale__control--value');
 const scaleControlSmallerElement = scaleElement.querySelector('.scale__control--smaller');
 const scaleControlBiggerElement = scaleElement.querySelector('.scale__control--bigger');
-
-const SCALE_STEP = 25;
-const SCALE_MIN_VALUE = 25;
-const SCALE_MAX_VALUE = 100;
-const SCALE_NORMAL_VALUE = 100;
 
 let currentScaleValue = SCALE_NORMAL_VALUE;
 

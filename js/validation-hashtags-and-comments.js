@@ -1,9 +1,9 @@
+const HASHTAGS_ARRAY_LENGTH_MAX = 5;
+const COMMENT_LENGTH_MAX = 140;
+
 const imgUploadFormElement = document.querySelector('.img-upload__form');
 const hashtagInputElement = imgUploadFormElement.querySelector('.text__hashtags');
 const commentInputElement = imgUploadFormElement.querySelector('.text__description');
-
-const HASHTAGS_ARRAY_LENGTH_MAX = 5;
-const COMMENT_LENGTH_MAX = 140;
 
 const pristine = new Pristine(imgUploadFormElement, {
   classTo: 'img-upload__field-wrapper',

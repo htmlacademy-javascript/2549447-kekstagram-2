@@ -1,7 +1,9 @@
 import { renderTumbnails } from './render-tumbnails.js';
 import { debounce } from './utils.js';
 
-const imgFiltersElement = document.querySelector('.img-filters');
+const RANDOM_IMG_SHOW_MAX = 10;
+
+const ACTIVE_BUTTON_CLASS = 'img-filters__button--active';
 
 const FILTER = {
   default: 'filter-default',
@@ -14,9 +16,7 @@ const SORT_FUNCTION = {
   discussed: (a, b) => b.comments.length - a.comments.length,
 };
 
-const RANDOM_IMG_SHOW_MAX = 10;
-
-const ACTIVE_BUTTON_CLASS = 'img-filters__button--active';
+const imgFiltersElement = document.querySelector('.img-filters');
 
 let currentFilter = FILTER.default;
 let tumbnailsArray = [];
