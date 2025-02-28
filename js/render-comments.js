@@ -12,7 +12,7 @@ let startCommentsListLength = 0;
 
 let allComments = [];
 
-const renderCommentsBySteps = () => {
+const onCommentsByStepRendering = () => {
   const listCommentsFragment = document.createDocumentFragment();
 
   const visibleComments = allComments.slice(startCommentsListLength, startCommentsListLength + NEW_COMMENTS_LIST_LENGTH_STEP);
@@ -47,13 +47,13 @@ const clearOldComments = () => {
   startCommentsListLength = 0;
   socialCommentsElement.innerHTML = '';
   commentsLoaderElement.classList.remove('hidden');
-  commentsLoaderElement.removeEventListener('click', renderCommentsBySteps);
+  commentsLoaderElement.removeEventListener('click', onCommentsByStepRendering);
 };
 
 const renderComments = (data) => {
   allComments = data.comments;
-  renderCommentsBySteps();
-  commentsLoaderElement.addEventListener('click', renderCommentsBySteps);
+  onCommentsByStepRendering();
+  commentsLoaderElement.addEventListener('click', onCommentsByStepRendering);
 };
 
 export {

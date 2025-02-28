@@ -19,25 +19,25 @@ const scaleActions = () => {
   imgUploadElement.style.transform = `scale(${ clearPersentValue })`;
 };
 
-const scaleControlSmallerElementClick = () => {
+const onScaleControlSmallerElementClick = () => {
   currentScaleValue = Math.max(currentScaleValue - SCALE_STEP, SCALE_MIN_VALUE);
   scaleActions();
 };
 
-const scaleControlBiggerElementClick = () => {
+const onScaleControlBiggerElementClick = () => {
   currentScaleValue = Math.min(currentScaleValue + SCALE_STEP, SCALE_MAX_VALUE);
   scaleActions();
 };
 
 const scaleControlEventListener = () => {
-  scaleControlSmallerElement.addEventListener(('click'), scaleControlSmallerElementClick);
-  scaleControlBiggerElement.addEventListener(('click'), scaleControlBiggerElementClick);
+  scaleControlSmallerElement.addEventListener(('click'), onScaleControlSmallerElementClick);
+  scaleControlBiggerElement.addEventListener(('click'), onScaleControlBiggerElementClick);
   scaleActions();
 };
 
 const normalizeScale = () => {
-  scaleControlSmallerElement.removeEventListener(('click'), scaleControlSmallerElementClick);
-  scaleControlBiggerElement.removeEventListener(('click'), scaleControlBiggerElementClick);
+  scaleControlSmallerElement.removeEventListener(('click'), onScaleControlSmallerElementClick);
+  scaleControlBiggerElement.removeEventListener(('click'), onScaleControlBiggerElementClick);
   currentScaleValue = SCALE_NORMAL_VALUE;
   scaleActions();
 };
