@@ -5,7 +5,6 @@ const FILE_TYPES = [
   '.webp'
 ];
 
-
 const imgUploadElement = document.querySelector('.img-upload');
 const imgUploadInputElement = imgUploadElement.querySelector('.img-upload__input');
 const imgUploadPreviewElement = imgUploadElement.querySelector('.img-upload__preview img');
