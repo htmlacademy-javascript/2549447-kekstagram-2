@@ -1,18 +1,26 @@
+const picturesElement = document.querySelector('.pictures');
+
+let tumbnailsArray = [];
+
+const clearShowTumbnails = () => {
+  picturesElement.querySelectorAll('a.picture').forEach((item) => item.remove());
+};
+
 const renderTumbnails = (data) => {
+  clearShowTumbnails();
+  tumbnailsArray = data;
   const pictureTemplateElement = document
     .querySelector('#picture')
     .content
     .querySelector('.picture');
 
-  const picturesElement = document.querySelector('.pictures');
-
   const listPicturesFragment = document.createDocumentFragment();
 
-  data.forEach(({photo, description, likes, comments, id}) => {
+  tumbnailsArray.forEach(({url, description, likes, comments, id}) => {
     const pictureCloneElement = pictureTemplateElement.cloneNode(true);
     const pictureImgElement = pictureCloneElement.querySelector('.picture__img');
     pictureCloneElement.dataset.pictureId = id;
-    pictureImgElement.src = photo;
+    pictureImgElement.src = url;
     pictureImgElement.alt = description;
 
     const pictureInfoElement = pictureCloneElement.querySelector('.picture__info');
