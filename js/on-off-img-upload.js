@@ -12,20 +12,20 @@ const commentInputElement = imgUploadOverlayElement.querySelector('.text__descri
 const imgUploadFormElement = imgUploadElement.querySelector('.img-upload__form');
 
 const resetErrorClass = () => {
-  const imgUploadFieldWrapperList = imgUploadOverlayElement.querySelectorAll('.img-upload__field-wrapper');
-  imgUploadFieldWrapperList.forEach((item) => {
+  const uploadImages = imgUploadOverlayElement.querySelectorAll('.img-upload__field-wrapper');
+  uploadImages.forEach((item) => {
     item.classList.remove('img-upload__field-wrapper--error');
   });
 };
 
 const resetPrisineError = () => {
-  const pristineErrorList = imgUploadOverlayElement.querySelectorAll('.pristine-error');
-  pristineErrorList.forEach((item) => {
+  const pristineErrors = imgUploadOverlayElement.querySelectorAll('.pristine-error');
+  pristineErrors.forEach((item) => {
     item.innerHTML = '';
   });
 };
 
-const imgCloseActions = () => {
+const onImgReset = () => {
   removeEventsCloseImgUpload();
   imgUploadOverlayElement.classList.add('hidden');
   bodyElement.classList.remove('modal-open');
@@ -42,25 +42,25 @@ const onDocumentKeydown = (evt) => {
       evt.stopPropagation();
       bodyElement.classList.add('modal-open');
     } else {
-      imgCloseActions();
+      onImgReset();
     }
   }
 };
 
 function removeEventsCloseImgUpload () {
   document.removeEventListener('keydown', onDocumentKeydown);
-  imgUploadCancelElement.removeEventListener('click', imgCloseActions);
+  imgUploadCancelElement.removeEventListener('click', onImgReset);
 }
 
 const registerEventsOpenImgUpload = () => {
   imgUploadInputElement.addEventListener('change', () => {
     if (imgUpload() === false) {
-      imgCloseActions();
+      onImgReset();
     } else {
       document.addEventListener('keydown', onDocumentKeydown);
       imgUploadOverlayElement.classList.remove('hidden');
       bodyElement.classList.add('modal-open');
-      imgUploadCancelElement.addEventListener('click', imgCloseActions);
+      imgUploadCancelElement.addEventListener('click', onImgReset);
       scaleControlEventListener();
       resetEffects();
       effectsEventListener();
@@ -70,5 +70,5 @@ const registerEventsOpenImgUpload = () => {
 
 export {
   registerEventsOpenImgUpload,
-  imgCloseActions
+  onImgReset
 };

@@ -12,8 +12,8 @@ const FILTER = {
 };
 
 const SORT_FUNCTION = {
-  random: () => 0.5 - Math.random(),
-  discussed: (a, b) => b.comments.length - a.comments.length,
+  getRandomNumber: () => 0.5 - Math.random(),
+  getFilteringValue: (a, b) => b.comments.length - a.comments.length,
 };
 
 const imgFiltersElement = document.querySelector('.img-filters');
@@ -29,15 +29,15 @@ const applyFilter = () => {
     filteredPictures = tumbnailsArray;
   }
   if (currentFilter === FILTER.random) {
-    filteredPictures = tumbnailsArray.toSorted(SORT_FUNCTION.random).slice(0, RANDOM_IMG_SHOW_MAX);
+    filteredPictures = tumbnailsArray.toSorted(SORT_FUNCTION.getRandomNumber).slice(0, RANDOM_IMG_SHOW_MAX);
   }
   if (currentFilter === FILTER.discussed) {
-    filteredPictures = tumbnailsArray.toSorted(SORT_FUNCTION.discussed);
+    filteredPictures = tumbnailsArray.toSorted(SORT_FUNCTION.getFilteringValue);
   }
   debounceRenderingTumbnails(filteredPictures);
 };
 
-const filterChange = (evt) => {
+const onFilterChange = (evt) => {
   const targetButton = evt.target;
   const activeButtonElement = imgFiltersElement.querySelector(`.${ACTIVE_BUTTON_CLASS}`);
   if (!targetButton.matches('button')) {
@@ -53,12 +53,12 @@ const filterChange = (evt) => {
   applyFilter();
 };
 
-const configFilter = (data) => {
+const initFiltering = (data) => {
   imgFiltersElement.classList.remove('img-filters--inactive');
-  imgFiltersElement.addEventListener('click', filterChange);
+  imgFiltersElement.addEventListener('click', onFilterChange);
   tumbnailsArray = data;
 };
 
 export {
-  configFilter
+  initFiltering
 };

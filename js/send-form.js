@@ -1,6 +1,6 @@
 import { sendServerData } from './api.js';
 import { pristine, hashtagsInputNormalize } from './validation-hashtags-and-comments.js';
-import { imgCloseActions } from './on-off-img-upload.js';
+import { onImgReset } from './on-off-img-upload.js';
 import { appendNotification } from './notification.js';
 
 const imgUploadFormElement = document.querySelector('.img-upload__form');
@@ -21,7 +21,7 @@ const sendFormData = async (formElement) => {
     disabledSubmitButton();
     try {
       await sendServerData(new FormData(formElement));
-      appendNotification(templateSuccess, () => imgCloseActions());
+      appendNotification(templateSuccess, () => onImgReset());
     } catch (error) {
       appendNotification(templateError);
     } finally {
@@ -30,14 +30,14 @@ const sendFormData = async (formElement) => {
   }
 };
 
-const checkFormSubmit = (evt) => {
+const onFormSubmitCheck = (evt) => {
   evt.preventDefault();
   hashtagsInputNormalize();
   sendFormData(evt.target);
 };
 
 const initFormSubmit = () => {
-  imgUploadFormElement.addEventListener('submit', checkFormSubmit);
+  imgUploadFormElement.addEventListener('submit', onFormSubmitCheck);
 };
 
 export {

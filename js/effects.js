@@ -31,10 +31,10 @@ noUiSlider.create(effectLevelSliderElement, {
   },
 });
 
-const filterChange = (filter, unit) => {
+const onEffectValueChange = (effect, unit) => {
   effectLevelSliderElement.noUiSlider.on('update', () => {
     effectLevelValueElement.setAttribute('value', effectLevelSliderElement.noUiSlider.get() + unit);
-    imgUploadElement.style.filter = `${ filter }(${ effectLevelValueElement.getAttribute('value') })`;
+    imgUploadElement.style.filter = `${ effect }(${ effectLevelValueElement.getAttribute('value') })`;
   });
 };
 
@@ -98,7 +98,7 @@ const effectsEventListener = () => {
   effectChromeElement.addEventListener('change', (evt) => {
     if (evt.target.checked) {
       effectLevelElement.classList.remove('hidden');
-      filterChange('grayscale','');
+      onEffectValueChange('grayscale','');
       getSettingsEffectGrayscalSepia();
     }
   });
@@ -106,7 +106,7 @@ const effectsEventListener = () => {
   effectSepiaElement.addEventListener('change', (evt) => {
     if (evt.target.checked) {
       effectLevelElement.classList.remove('hidden');
-      filterChange('sepia','');
+      onEffectValueChange('sepia','');
       getSettingsEffectGrayscalSepia();
     }
   });
@@ -114,7 +114,7 @@ const effectsEventListener = () => {
   effectMarvinElement.addEventListener('change', (evt) => {
     if (evt.target.checked) {
       effectLevelElement.classList.remove('hidden');
-      filterChange('invert','%');
+      onEffectValueChange('invert','%');
       getSettingsEffectMarvin();
     }
   });
@@ -122,7 +122,7 @@ const effectsEventListener = () => {
   effectPhobosElement.addEventListener('change', (evt) => {
     if (evt.target.checked) {
       effectLevelElement.classList.remove('hidden');
-      filterChange('blur','px');
+      onEffectValueChange('blur','px');
       getSettingsEffectPhobos();
     }
   });
@@ -130,7 +130,7 @@ const effectsEventListener = () => {
   effectHeatElement.addEventListener('change', (evt) => {
     if (evt.target.checked) {
       effectLevelElement.classList.remove('hidden');
-      filterChange('brightness','');
+      onEffectValueChange('brightness','');
       getSettingsEffectHeat();
     }
   });
