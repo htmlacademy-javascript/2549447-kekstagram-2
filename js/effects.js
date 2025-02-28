@@ -9,6 +9,7 @@ const effectSepiaElement = effectsListElement.querySelector('#effect-sepia');
 const effectMarvinElement = effectsListElement.querySelector('#effect-marvin');
 const effectPhobosElement = effectsListElement.querySelector('#effect-phobos');
 const effectHeatElement = effectsListElement.querySelector('#effect-heat');
+=======
 
 noUiSlider.create(effectLevelSliderElement, {
   range: {
