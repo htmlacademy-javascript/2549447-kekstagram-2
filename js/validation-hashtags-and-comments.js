@@ -24,15 +24,11 @@ const isHashtagValueValid = (value) => {
     }
   )) {
     return true;
-  } else {
-    return false;
   }
 };
 
 const isHashtagsRepeatValid = (value) => {
-  if (inputHashtags(value).some((item, num, array) => array.includes(item, num + 1))) {
-    return false;
-  } else {
+  if (!(inputHashtags(value).some((item, num, items) => items.includes(item, num + 1)))) {
     return true;
   }
 };
@@ -41,8 +37,6 @@ const isHashtagsQuantityValid = (value) => {
   const hashtagsQuantityValid = inputHashtags(value).length <= HASHTAGS_ARRAY_LENGTH_MAX;
   if (hashtagsQuantityValid) {
     return hashtagsQuantityValid;
-  } else {
-    return false;
   }
 };
 
@@ -50,8 +44,6 @@ const isCommentValid = (value) => {
   const commentValidLength = value.length <= COMMENT_LENGTH_MAX;
   if (commentValidLength) {
     return commentValidLength;
-  } else {
-    return false;
   }
 };
 
