@@ -1,3 +1,5 @@
+const NEW_COMMENTS_LIST_LENGTH_STEP = 5;
+
 const socialElement = document.querySelector('.social');
 const socialCommentsElement = socialElement.querySelector('.social__comments');
 const socialCommentElement = socialCommentsElement.querySelector('.social__comment');
@@ -7,7 +9,7 @@ const commentsShownCountElement = socialCommentCountElement.querySelector('.soci
 const commentsLoaderElement = socialElement.querySelector('.social__comments-loader');
 
 let startCommentsListLength = 0;
-const NEW_COMMENTS_LIST_LENGTH_STEP = 5;
+
 let allComments = [];
 
 const renderCommentsBySteps = () => {

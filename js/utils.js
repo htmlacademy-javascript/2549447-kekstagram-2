@@ -1,9 +1,8 @@
+const ERROR_SET_TIMEOUT = 5000;
+const RENDER_DELAY = 500;
+
 const bodyElement = document.querySelector('body');
 const dataErrorTemplateElement = bodyElement.querySelector('#data-error').content;
-
-const ERROR_SET_TIMEOUT = 5000;
-
-const RENDER_DELAY = 500;
 
 const showErrorMessage = () => {
   const dataErrorCloneElement = dataErrorTemplateElement.cloneNode(true);

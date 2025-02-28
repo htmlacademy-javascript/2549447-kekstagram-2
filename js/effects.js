@@ -2,12 +2,13 @@ const imgUploadElement = document.querySelector('.img-upload__preview img');
 const effectLevelElement = document.querySelector('.img-upload__effect-level');
 const effectLevelValueElement = effectLevelElement.querySelector('.effect-level__value');
 const effectLevelSliderElement = effectLevelElement.querySelector('.effect-level__slider');
-const effectNoneElement = document.querySelector('#effect-none');
-const effectChromeElement = document.querySelector('#effect-chrome');
-const effectSepiaElement = document.querySelector('#effect-sepia');
-const effectMarvinElement = document.querySelector('#effect-marvin');
-const effectPhobosElement = document.querySelector('#effect-phobos');
-const effectHeatElement = document.querySelector('#effect-heat');
+const effectsListElement = document.querySelector('.effects__list');
+const effectNoneElement = effectsListElement.querySelector('#effect-none');
+const effectChromeElement = effectsListElement.querySelector('#effect-chrome');
+const effectSepiaElement = effectsListElement.querySelector('#effect-sepia');
+const effectMarvinElement = effectsListElement.querySelector('#effect-marvin');
+const effectPhobosElement = effectsListElement.querySelector('#effect-phobos');
+const effectHeatElement = effectsListElement.querySelector('#effect-heat');
 
 noUiSlider.create(effectLevelSliderElement, {
   range: {
